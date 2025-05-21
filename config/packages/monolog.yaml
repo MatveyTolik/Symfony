@@ -1,0 +1,15 @@
+monolog:
+  channels: ['weather']
+
+  handlers:
+    main:
+      type: stream
+      path: '%kernel.logs_dir%/%kernel.environment%.log'
+      level: debug
+      channels: ['!event']
+
+    weather:
+      type: stream
+      path: '%kernel.logs_dir%/weather_log.txt'
+      level: info
+      channels: ['weather']

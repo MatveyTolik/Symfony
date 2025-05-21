@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Погода у {{ city }}{% endblock %}
+
+{% block body %}
+  <h1>Погода у {{ city }}</h1>
+
+  {% if weatherData.error is defined %}
+    <p>Не вдалося отримати дані про погоду</p>
+    <p>{{ weatherData.error }}</p>
+  {% else %}
+    <p>Поточна погода у {{ weatherData.city }}, {{ weatherData.country }}: </p>
+    <p>Температура: {{ weatherData.temperature }} °C</p>
+    <p>Стан: {{ weatherData.condition }}</p>
+    <p>Вологість: {{ weatherData.humidity }}</p>
+    <p>Швидкість вітру: {{ weatherData.wind_speed }}</p>
+    <p>Останнє оновлення: {{ weatherData.last_updated }}</p>
+  {% endif %}
+{% endblock %}
